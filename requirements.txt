@@ -21,7 +21,6 @@ pydantic==2.12.5
 # Database (Postgres memory)
 psycopg==3.3.3
 psycopg-binary==3.3.3
-psycopg2-binary==2.9.10
 
 # Meta channel (WhatsApp / Instagram / Messenger)
 httpx==0.28.1
