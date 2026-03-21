@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 # LangChain imports — the framework that connects everything together
 from langchain_openai import ChatOpenAI          # OpenAI model wrapper
 from langchain_anthropic import ChatAnthropic    # Anthropic (Claude) model wrapper
+from langchain_google_genai import ChatGoogleGenerativeAI  # Google Gemini model wrapper
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from langchain_postgres import PostgresChatMessageHistory
 import psycopg
@@ -41,6 +42,7 @@ logger = logging.getLogger(__name__)
 MODEL_PROVIDER  = os.getenv("MODEL_PROVIDER", "openai")       # which LLM company to use
 OPENAI_MODEL    = os.getenv("OPENAI_MODEL", "gpt-4o-mini")    # cheap + fast, good for support
 ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-haiku-4-5")
+GEMINI_MODEL    = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
 TEMPERATURE     = float(os.getenv("TEMPERATURE", "0.3"))
 # Temperature controls how creative/random the model is.
 # 0.0 = fully deterministic (same input → same output every time)
@@ -114,6 +116,12 @@ def get_llm():
             model=ANTHROPIC_MODEL,
             temperature=TEMPERATURE,
             api_key=os.getenv("ANTHROPIC_API_KEY"),
+        )
+    if MODEL_PROVIDER == "gemini":
+        return ChatGoogleGenerativeAI(
+            model=GEMINI_MODEL,
+            temperature=TEMPERATURE,
+            google_api_key=os.getenv("GEMINI_API_KEY"),
         )
     return ChatOpenAI(
         model=OPENAI_MODEL,
