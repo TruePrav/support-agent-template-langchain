@@ -76,8 +76,8 @@ Run these commands one at a time. Copy-paste exactly as shown.
 
 **Step 1 -- Download the template:**
 ```bash
-git clone https://github.com/trueprav/support-agent-template
-cd support-agent-template
+git clone https://github.com/TruePrav/support-agent-template-langchain
+cd support-agent-template-langchain
 ```
 
 > **Don't have Git?** Download from [git-scm.com](https://git-scm.com/downloads). Or download the ZIP from GitHub and extract it -- then `cd` into the folder.
