@@ -1,125 +1,123 @@
-# NovaTech Gaming — Knowledge Base
+<!--
+HOW TO CUSTOMIZE THIS FILE
+===========================
+This file is your agent's brain. Everything in here is what your agent knows.
+
+To customize for your own business:
+1. Replace "NovaTech Gaming" with your business name everywhere it appears
+2. Update the store locations, hours, and contact details
+3. Replace the Products/Services section with what YOU sell
+4. Update the Policies section with YOUR actual policies
+5. Rewrite the FAQ section with questions your real customers ask
+6. Remove the "Escalation Contacts" section or update it with your team's info
+
+Formatting tips:
+- Use plain sentences. The agent reads this like a document.
+- Be specific: "Returns accepted within 14 days" beats "we have a return policy"
+- Q&A format works great: "Q: Do you ship? A: Yes, within Canada."
+- No need to write perfectly -- the AI understands plain English
+
+This is a demo for NovaTech Gaming (a fictional gaming store in Toronto).
+-->
 
 ## Store Information
-**Name:** NovaTech Gaming
-**Tagline:** Your one-stop shop for gaming gear, consoles & digital gift cards
-**Location:** 142 Player One Plaza, Toronto, Ontario, M5V 2K7
-**Phone:** +1 (416) 555-0192
-**Email:** support@novatechgaming.ca
-**Website:** novatechgaming.ca
 
-## Store Hours
-- Monday to Friday: 10:00 AM – 9:00 PM
-- Saturday: 10:00 AM – 8:00 PM
-- Sunday: 11:00 AM – 6:00 PM
-- Holidays: Closed on Christmas Day and New Year's Day. Reduced hours on other holidays — check our website.
+**Business name:** NovaTech Gaming
+**Type:** Retail store & online shop
 
-## What We Sell
+### Locations
+- NovaTech Downtown: 145 King Street West, Toronto, ON M5H 1J8
+- NovaTech North York: 2900 Yonge Street, Toronto, ON M4N 2K3
 
-### Consoles
-- PlayStation 5 (Standard & Digital Edition)
-- Xbox Series X and Series S
-- Nintendo Switch (OLED, Standard, and Lite)
-- Steam Deck
+### Hours
+- Monday to Friday: 10:00 AM to 8:00 PM
+- Saturday: 10:00 AM to 6:00 PM
+- Sunday: 11:00 AM to 5:00 PM
 
-### Controllers & Accessories
-- DualSense (PS5) — Midnight Black, White, Cosmic Red, Galactic Purple
-- Xbox Wireless Controller — Carbon Black, Robot White, Shock Blue
-- Nintendo Pro Controller
-- Headsets: SteelSeries, HyperX, Turtle Beach
-- Gaming mice, keyboards, and mousepads
+### Contact
+- Phone: (416) 555-7842
+- Email: support@novatechgaming.ca
+- Website: https://www.novatechgaming.ca
 
-### Digital Gift Cards (in-store and online)
-- PlayStation Store: $10, $20, $50, $100 CAD
-- Xbox / Microsoft: $10, $25, $50, $100 CAD
-- Nintendo eShop: $10, $20, $35, $50 CAD
-- Steam Wallet: $20, $50, $100 CAD
-- Roblox: $10, $25, $50 CAD (Robux)
-- Fortnite / V-Bucks: $10, $25, $40 CAD
-- Google Play: $15, $25, $50, $100 CAD
-- Apple iTunes: $15, $25, $50, $100 CAD
+---
 
-### Pre-Owned Games
-- We buy and sell pre-owned PS5, Xbox Series X, and Switch games
-- All pre-owned games are tested and come with a 30-day warranty
+## Products / Services
 
-## Pricing
-- Consoles: Retail pricing, no markups
-- Gift cards: Face value only — no added fees
-- Pre-owned games: Starting from $9.99 — prices vary by title
+We specialize in gaming and digital entertainment products, both in-store and online.
 
-## Shipping & Delivery
-- In-store pickup: Available same day
-- Local delivery (Toronto): $5 flat rate, next-day delivery
-- Canada-wide shipping: $9.99 flat rate, 3-5 business days
-- Digital gift cards (online orders): Delivered by email within 15 minutes of payment confirmation
+- Gaming consoles: PlayStation, Xbox, Nintendo Switch
+- Gaming accessories: controllers, headsets, racing wheels, keyboards, mice
+- PC components: GPUs, RAM, SSDs, gaming peripherals
+- Digital gift cards:
+  - PlayStation Network (PSN)
+  - Xbox Live / Microsoft Store
+  - Steam Wallet
+  - Roblox
+  - Nintendo eShop
+- Video games (physical and digital codes)
 
-## Return & Exchange Policy
-- **Unopened physical products:** 14-day return for full refund
-- **Opened physical products:** Exchange only (same or equal value item), within 7 days
-- **Digital gift cards:** No refunds or exchanges once the code has been delivered — this is a firm policy
-- **Pre-owned games:** 30-day exchange if defective. Must be returned with original case.
-- Proof of purchase required for all returns and exchanges
+Services:
+- Pre-orders for upcoming game releases and consoles
+- In-store pickup and online ordering
+- Trade-in program for consoles and games (we accept used PS4, PS5, Xbox, Nintendo Switch)
+- Basic setup assistance for consoles purchased in-store
+- No repair services offered
 
-## Gift Card Redemption Help
+---
 
-### PlayStation Store
-1. Go to PlayStation Store on your console or ps.store/redeemcodes
-2. Select "Redeem Codes" from the menu
-3. Enter the 12-digit code and confirm
-4. Funds are added to your wallet instantly
+## Policies
 
-### Xbox / Microsoft
-1. Go to redeem.microsoft.com or press the Xbox button → Profile → Redeem code
-2. Enter the 25-character code
-3. Funds appear in your Microsoft account instantly
+### Returns
+- Returns accepted within 14 days of purchase
+- Item must be unused, unopened, and in original packaging
+- Receipt or proof of purchase is required
+- Opened software and digital codes are non-returnable
 
-### Nintendo eShop
-1. Open the eShop on your Switch
-2. Select your profile icon → "Redeem Code"
-3. Enter the 16-character code
+### Refunds
+- Refunds are issued to the original payment method
+- Processing time: 3-5 business days
+- Store credit may be offered for certain returns
 
-### Steam
-1. Open Steam → click your username → "Redeem a Steam Gift Card"
-2. Enter the code and click "Continue"
-3. Funds are added to your Steam Wallet
+### Warranty
+- All hardware includes a 30-day in-store warranty
+- Manufacturer warranty applies after 30 days
+- Warranty does not cover physical damage or misuse
 
-### Common Gift Card Issues
-**"Code already redeemed"** — The code has been used before. Contact us with your receipt and we will investigate.
-**"Invalid code"** — Double-check for typos. Common mistakes: 0 vs O, 1 vs I. If still invalid, contact us.
-**"Region mismatch"** — Our PlayStation and Xbox cards are CAD region. Make sure your account is set to Canada.
-**Code not working after 30 minutes** — Restart the app or console and try again. If still failing, contact us.
+---
 
 ## Frequently Asked Questions
 
-**Q: Do you price match?**
-A: Yes — we match prices from major Canadian retailers (Best Buy, EB Games, Walmart). Show us the listing in-store or send us a screenshot online.
+**Q: Do you offer delivery?**
+A: Yes, we offer local delivery within Toronto (1-2 days) and Canada-wide shipping (2-5 business days).
+
+**Q: Can I reserve an item?**
+A: Yes, we can hold items for up to 24 hours with a deposit.
+
+**Q: Do you accept credit cards?**
+A: Yes, we accept Visa, Mastercard, American Express, debit, and cash.
+
+**Q: Are digital gift cards delivered instantly?**
+A: Yes, most digital codes are delivered within 5-15 minutes after payment confirmation.
 
 **Q: Do you buy used consoles?**
-A: Yes! Bring your console in-store for a free valuation. We offer store credit or cash.
+A: Yes, we accept trade-ins on consoles including PS4, PS5, Xbox, and Nintendo Switch. Trade-in value depends on condition and current market demand. Bring the console in-store for an assessment.
 
-**Q: Can I reserve a product?**
-A: Yes — call us or come in-store. We hold items for up to 48 hours with a deposit.
-
-**Q: Do you repair consoles?**
-A: We do not offer repair services. We recommend uBreakiFix for console repairs.
-
-**Q: Can I check if a game is in stock?**
-A: Yes — message us here, call, or check our website. We update inventory daily.
-
-**Q: Do you sell PC components?**
-A: Not currently — we focus on consoles, accessories, and gift cards.
-
-**Q: Are your gift cards physical or digital?**
-A: Both. In-store we sell physical cards. Online orders receive a digital code by email.
+**Q: Do you offer repairs?**
+A: No, we do not currently offer repair services. We recommend contacting the manufacturer or a local repair shop.
 
 **Q: What payment methods do you accept?**
-A: Visa, Mastercard, American Express, Interac Debit, and cash in-store. Online orders: Visa, Mastercard, and PayPal.
+A: Visa, Mastercard, American Express, debit cards, and cash. We do not accept cheques.
 
-## Escalate to human support for:
-- Payment disputes or failed transactions
-- Lost or stolen gift card codes
-- Requests for refunds on digital gift cards
-- Bulk orders (10+ gift cards)
-- Any complaint the customer wants escalated
-- Anything not covered in this knowledge base
+**Q: Can I pre-order upcoming games?**
+A: Yes, we take pre-orders for upcoming game releases and consoles. Visit us in-store or check our website.
+
+---
+
+## Escalation Contacts
+
+When the agent escalates, a notification is sent to the number/ID in your .env file.
+Make sure ESCALATION_CHAT_ID is set to your personal Telegram ID.
+Get your ID by messaging @userinfobot on Telegram.
+
+- Support Manager: Alex Chen
+- Backup Contact Email: escalations@novatechgaming.ca
