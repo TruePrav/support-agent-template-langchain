@@ -112,21 +112,40 @@ ESCALATE -- [brief reason]
 def get_llm():
     """Return the configured language model."""
     if MODEL_PROVIDER == "anthropic":
+        api_key = os.getenv("ANTHROPIC_API_KEY")
+        if not api_key:
+            raise ValueError(
+                "ANTHROPIC_API_KEY is missing from your .env file. "
+                "Get your key at console.anthropic.com/settings/keys"
+            )
         return ChatAnthropic(
             model=ANTHROPIC_MODEL,
             temperature=TEMPERATURE,
-            api_key=os.getenv("ANTHROPIC_API_KEY"),
+            api_key=api_key,
         )
     if MODEL_PROVIDER == "gemini":
+        api_key = os.getenv("GEMINI_API_KEY")
+        if not api_key:
+            raise ValueError(
+                "GEMINI_API_KEY is missing from your .env file. "
+                "Get your key at aistudio.google.com/app/apikey"
+            )
         return ChatGoogleGenerativeAI(
             model=GEMINI_MODEL,
             temperature=TEMPERATURE,
-            google_api_key=os.getenv("GEMINI_API_KEY"),
+            google_api_key=api_key,
+        )
+    # Default: OpenAI
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError(
+            "OPENAI_API_KEY is missing from your .env file. "
+            "Get your key at platform.openai.com/api-keys"
         )
     return ChatOpenAI(
         model=OPENAI_MODEL,
         temperature=TEMPERATURE,
-        api_key=os.getenv("OPENAI_API_KEY"),
+        api_key=api_key,
     )
 
 
@@ -152,21 +171,31 @@ def get_memory(session_id: str) -> BaseChatMessageHistory:
     If DATABASE_URL is set: uses Postgres (persistent — survives restarts).
     If not set: uses in-memory storage (resets on restart — fine for testing).
     """
-    if DATABASE_URL:
-        # PostgresChatMessageHistory requires a valid UUID for session_id.
-        # We derive a deterministic UUID from the session_id string so the
-        # same user always gets the same UUID (and thus the same memory).
-        session_uuid = str(uuid.uuid5(uuid.NAMESPACE_DNS, session_id))
-        # One persistent connection per session — kept open for the request lifetime.
-        # Table is created once at startup in build_agent(), not here.
-        conn = psycopg.connect(DATABASE_URL, autocommit=True)
-        return PostgresChatMessageHistory(
-            "message_store",
-            session_uuid,
-            sync_connection=conn,
-        )
-    # Local testing fallback — no DB needed
     from langchain_core.chat_history import InMemoryChatMessageHistory
+
+    if DATABASE_URL:
+        try:
+            # PostgresChatMessageHistory requires a valid UUID for session_id.
+            # We derive a deterministic UUID from the session_id string so the
+            # same user always gets the same UUID (and thus the same memory).
+            session_uuid = str(uuid.uuid5(uuid.NAMESPACE_DNS, session_id))
+            conn = psycopg.connect(DATABASE_URL, autocommit=True, connect_timeout=5)
+            return PostgresChatMessageHistory(
+                "message_store",
+                session_uuid,
+                sync_connection=conn,
+            )
+        except Exception as e:
+            logger.warning(
+                f"Database connection failed — falling back to in-memory storage. "
+                f"Error: {e}\n"
+                f"Check your DATABASE_URL in .env. "
+                f"If using Supabase, use the session pooler URL "
+                f"(aws-0-*.pooler.supabase.com:5432), not the direct URL."
+            )
+            return InMemoryChatMessageHistory()
+
+    # No DATABASE_URL set — in-memory mode (conversations reset on restart)
     return InMemoryChatMessageHistory()
 
 
@@ -184,14 +213,27 @@ def get_memory(session_id: str) -> BaseChatMessageHistory:
 
 def build_agent():
     """Assemble the full agent chain with prompt + LLM + memory."""
-    # Create the Postgres table once at startup (no-op if it already exists).
-    # Doing it here means it runs once when the bot starts, not on every message.
-    if DATABASE_URL:
-        with psycopg.connect(DATABASE_URL, autocommit=True) as conn:
-            PostgresChatMessageHistory.create_tables(conn, "message_store")
-        logger.info("Postgres memory table ready")
+    # Validate API key up front so users get a clear error at startup,
+    # not a confusing hang or cryptic error on the first message.
+    try:
+        llm = get_llm()
+        logger.info(f"LLM ready: provider={MODEL_PROVIDER}")
+    except ValueError as e:
+        logger.error(f"Configuration error: {e}")
+        raise
 
-    llm = get_llm()
+    # Create the Postgres table once at startup (no-op if it already exists).
+    if DATABASE_URL:
+        try:
+            with psycopg.connect(DATABASE_URL, autocommit=True, connect_timeout=5) as conn:
+                PostgresChatMessageHistory.create_tables(conn, "message_store")
+            logger.info("Postgres memory table ready")
+        except Exception as e:
+            logger.warning(
+                f"Could not connect to database at startup — running in in-memory mode. "
+                f"Error: {e}"
+            )
+
     system_prompt = build_system_prompt()
 
     from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
