@@ -1,17 +1,17 @@
 # Core AI framework
-langchain
-langchain-core
-langchain-openai
-langchain-anthropic
-langchain-google-genai
-langchain-community
-langchain-postgres
+langchain==0.3.25
+langchain-core==0.3.55
+langchain-openai==0.3.12
+langchain-anthropic==0.3.12
+langchain-google-genai==2.1.4
+langchain-community==0.3.23
+langchain-postgres==0.0.17
 
 # Environment / config
 python-dotenv
 
 # Telegram channel
-python-telegram-bot
+python-telegram-bot==21.0
 
 # Web chat channel (FastAPI + server)
 fastapi
