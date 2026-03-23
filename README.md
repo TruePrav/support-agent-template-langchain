@@ -380,6 +380,22 @@ and static/index.html to my existing site. Keep the agent backend the same --
 just integrate the chat bubble into my pages and point the fetch URL to [YOUR API URL].
 ```
 
+**Making the widget publicly accessible:**
+
+The widget only works on your real website if `web_bot.py` is hosted on a public server. Running it locally (`localhost:8001`) is for testing only -- visitors to your site cannot reach it.
+
+To go live:
+
+1. Deploy `web_bot.py` to Railway or DigitalOcean (see [Going to Production](#going-to-production) below)
+2. Your server gets a public URL like `https://your-app.railway.app`
+3. Update the fetch URL in your website's script tag:
+```javascript
+const res = await fetch('https://your-app.railway.app/chat', { ... })
+```
+4. Paste the widget HTML into your site and you are live
+
+Your Telegram bot and web widget can run from the same server at the same time -- they share the same agent brain underneath.
+
 ---
 
 ## Meta / WhatsApp Setup (advanced)

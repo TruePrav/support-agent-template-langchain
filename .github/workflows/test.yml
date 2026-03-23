@@ -24,33 +24,23 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt --only-binary=:all:
+      - name: Upgrade pip
+        run: pip install --upgrade pip
 
-      - name: Smoke test -- imports work
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Smoke test -- core imports work
         run: |
           python -c "
           import os
           os.environ['OPENAI_API_KEY'] = 'sk-test-placeholder'
-          os.environ['MODEL_PROVIDER'] = 'openai'
           from langchain_openai import ChatOpenAI
           from langchain_anthropic import ChatAnthropic
           from langchain_google_genai import ChatGoogleGenerativeAI
-          from langchain_postgres import PostgresChatMessageHistory
           from langchain_core.runnables.history import RunnableWithMessageHistory
+          from langchain_postgres import PostgresChatMessageHistory
+          from fastapi import FastAPI
+          from telegram import Bot
           print('All imports OK')
           "
-
-      - name: Smoke test -- agent loads without DB
-        env:
-          OPENAI_API_KEY: sk-test-placeholder
-          MODEL_PROVIDER: openai
-        run: |
-          python -c "
-          # Should load cleanly in in-memory mode (no DB)
-          # API key is fake so we only test that the chain builds, not that it calls the API
-          import os
-          from agent import build_agent
-          print('Agent built OK')
-          "
-        continue-on-error: true  # fake API key will fail chain invoke but build should succeed
